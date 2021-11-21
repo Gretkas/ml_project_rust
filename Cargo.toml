@@ -1,0 +1,24 @@
+[package]
+name = "ml_project_rust"
+version = "0.1.0"
+edition = "2018"
+
+[lib]
+path = "src/lib.rs"
+name = "rust_ml"
+
+
+[[bin]]
+name = "thread_pool_test"
+path = "src/bin/thread_pool_test.rs"
+
+
+
+[dependencies]
+plotters = {version = "0.3.0", default_features = false, features = ["ttf", "all_series"]}
+plotters-piston = { git = "https://github.com/plotters-rs/plotters-piston"}
+systemstat = "0.1.5"
+piston_window = "0.120.0"
+mnist = "0.5.0"
+ndarray = "0.15.3"
+rand = "0.8.4"
