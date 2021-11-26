@@ -1,5 +1,6 @@
 [package]
 name = "ml_project_rust"
+license="MIT"
 version = "0.1.0"
 edition = "2018"
 
@@ -9,10 +10,24 @@ name = "rust_ml"
 
 
 [[bin]]
+name = "mnist_loading"
+path = "src/bin/mnist_loading.rs"
+
+[[bin]]
+name = "oja_test"
+path = "src/bin/oja_test.rs"
+
+[[bin]]
+name = "plotting_testing"
+path = "src/bin/plotting_testing.rs"
+
+[[bin]]
+name = "mt_network_benchmark"
+path = "src/bin/mt_network_benchmark.rs"
+
+[[bin]]
 name = "thread_pool_test"
 path = "src/bin/thread_pool_test.rs"
-
-
 
 [dependencies]
 plotters = {version = "0.3.0", default_features = false, features = ["ttf", "all_series"]}

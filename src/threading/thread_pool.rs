@@ -1,7 +1,10 @@
+//! Based on The Rust book's implementation of a Thread Pool and workers.  https://doc.rust-lang.org/book/ch20-02-multithreaded.html
+
 use std::{fmt, thread};
 use std::sync::{mpsc, Arc, Mutex};
 use std::fmt::{Debug};
 
+/// Thread pool struct for managing a pool of worker and distributing workloads.
 pub struct ThreadPool{
     workers: Vec<Worker>,
     sender: mpsc::Sender<Message>
@@ -43,7 +46,7 @@ impl Drop for ThreadPool {
             if let Some(thread) =  worker.thread.take(){
                   thread.join().unwrap();
             };
-            println!("worker {}, has successfully shut down", worker.id)
+            //println!("worker {}, has successfully shut down", worker.id)
         }
     }
 }
@@ -67,12 +70,12 @@ struct Worker{
 impl Worker{
     pub fn new(id: usize, receiver: Arc<Mutex<mpsc::Receiver<Message>>>) -> Worker {
         let thread = thread::spawn( move ||  {
-            println!("Thread {} is alive and ready to receive work", id);
+            //println!("Thread {} is alive and ready to receive work", id);
             loop {
                 let message = receiver.lock().expect("Worker Cannot obtain lock, the mutex might be poisoned").recv().expect("The sender is no longer available");
                 match message {
                     Message::NewJob(job) => {
-                        println!("worker {} performing new task", id);
+                        //println!("worker {} performing new task", id);
                         job()
                     }
                     Message::Terminate => {

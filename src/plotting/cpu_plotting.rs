@@ -1,3 +1,5 @@
+//! Based on plotters-piston CPUstat example. https://github.com/plotters-rs/plotters-piston/blob/master/examples/cpustat.rs
+//! Used to display live CPU stats in any given plotters window.
 use plotters::prelude::*;
 use plotters_piston::{PistonBackend};
 use systemstat::platform::common::Platform;
